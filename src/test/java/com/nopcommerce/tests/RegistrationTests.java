@@ -72,4 +72,15 @@ public class RegistrationTests {
 		userHomePageActions.clickLogout();
 	}
 
+	@Test(groups = {"negative"})
+	public void registerUserNegativeTest01() {
+		driver.get(Constants.USER_BASE_URL+Constants.USER_REGISTRATION_PAGE);
+		
+		actions.clickRegisterButton();
+		
+		Assert.assertEquals(actions.getFirstNameError(), "First name is required.");
+		Assert.assertEquals(actions.getLastNameError(), "Last name is required.");
+		Assert.assertEquals(actions.getEmailError(), "Email is required.");
+		Assert.assertEquals(actions.getPasswordError(), "Password is required.");
+	}
 }
